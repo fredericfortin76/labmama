@@ -4,12 +4,9 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-'recipe[selinux::disabled]'
 
-
-# install wget pour aller chercher fichier remote
 yum_package 'wget'
-
+yum_package 'initscripts'
 
 #Va chercher le package pour ajouter le repo de mysql dans yum
 remote_file '/tmp/mysql57-community-release-el7-11.noarch.rpm' do
@@ -21,11 +18,7 @@ remote_file '/tmp/mysql57-community-release-el7-11.noarch.rpm' do
 end
 
 #inatallation du repo mysql
-Dir['/tmp/*.rpm'].each do |path|
-  rpm_package File.basename(path) do
-    source path
-  end
-end
+execute 'rpm -ivh /tmp/mysql57-community-release-el7-11.noarch.rpm'
 
 
 #install mysql

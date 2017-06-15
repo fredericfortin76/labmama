@@ -18,4 +18,4 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/db'
-depends 'mysql', '~> 8.0'
+depends 'mysql', '~> 8.4.0'
