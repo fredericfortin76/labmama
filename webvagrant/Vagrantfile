@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
       config.vm.provider :vsphere do |vsphere|
         vsphere.name = vm_name
         vsphere.compute_resource_name = 'CLUSTER_INTDEV_QA_UAT_PREPROD'
-	vsphere.data_store_name = 'SAN_LUN3'
+	      vsphere.data_store_name = 'SAN_LUN3'
         vsphere.template_name = 'Templates/vtemplate-Centos7'
         vsphere.linked_clone = false
         vsphere.customization_spec_name = 'spec_linux'
@@ -25,6 +25,8 @@ Vagrant.configure("2") do |config|
         vsphere.user = 'administrator@vsphere.local'
         vsphere.password = 'P@ssw0rd'
       end
+      config.vm.provision "shell",
+        inline: "echo 192.168.10.23 cherservermafo1 >> /etc/hosts"
     end
   end
 end
