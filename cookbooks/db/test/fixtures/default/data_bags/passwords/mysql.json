@@ -1,0 +1,5 @@
+{
+  "id": "mysql",
+  "root_password": "sqlrootpasswd01",
+  "admin_password": "sqladminpasswd01"
+}
